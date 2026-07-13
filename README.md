@@ -116,8 +116,6 @@
 
 ## <h3 id="ui-design">3. 🖼 화면 설계</h3>
 
-`2차미니프로젝트_루키즈 2조_Mate_UI_화면_설계서.pdf`에서 화면 설계 이미지만 추출해 정리했습니다.
-
 <details open>
   <summary>화면 설계 이미지 보기</summary>
 
