@@ -121,44 +121,57 @@
 <details open>
   <summary>화면 설계 이미지 보기</summary>
 
-#### 화면 설계 1
-<img src="./public/readme/ui-design/ui-page-04-01.png" alt="MATE 화면 설계 1" width="800" />
+#### 메인 페이지
+모집글을 카드로 탐색하고 카테고리·키워드로 검색하는 시작 화면입니다.
+<img src="./public/readme/ui-design/ui-page-04-01.png" alt="메인 페이지" width="800" />
 
-#### 화면 설계 2
-<img src="./public/readme/ui-design/ui-page-08-01.png" alt="MATE 화면 설계 2" width="800" />
+#### 모집글 상세
+모집 현황, 진행 방식, 기술 스택을 확인하고 지원하는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-08-01.png" alt="모집글 상세" width="800" />
 
-#### 화면 설계 3
-<img src="./public/readme/ui-design/ui-page-11-01.png" alt="MATE 화면 설계 3" width="800" />
+#### 모집글 수정
+작성자가 등록한 모집글 정보를 수정하거나 삭제하는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-11-01.png" alt="모집글 수정" width="800" />
 
-#### 화면 설계 4
-<img src="./public/readme/ui-design/ui-page-15-01.png" alt="MATE 화면 설계 4" width="800" />
+#### 팀 전용 게시판
+모집이 확정된 팀원들이 소식을 공유하는 프로젝트 전용 게시판입니다.
+<img src="./public/readme/ui-design/ui-page-15-01.png" alt="팀 전용 게시판" width="800" />
 
-#### 화면 설계 5
-<img src="./public/readme/ui-design/ui-page-16-01.png" alt="MATE 화면 설계 5" width="420" />
+#### 게시판 글쓰기
+팀 게시판에 공지·일반·질문 카테고리로 새 글을 작성하는 모달입니다.
+<img src="./public/readme/ui-design/ui-page-16-01.png" alt="게시판 글쓰기 모달" width="420" />
 
-#### 화면 설계 6
-<img src="./public/readme/ui-design/ui-page-16-02.png" alt="MATE 화면 설계 6" width="700" />
+#### 게시글 상세 및 댓글
+게시글 내용을 확인하고 댓글로 소통하는 모달입니다.
+<img src="./public/readme/ui-design/ui-page-16-02.png" alt="게시글 상세 및 댓글 모달" width="700" />
 
-#### 화면 설계 7
-<img src="./public/readme/ui-design/ui-page-19-01.png" alt="MATE 화면 설계 7" width="700" />
+#### 로그인
+이메일과 비밀번호로 로그인하는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-19-01.png" alt="로그인 페이지" width="700" />
 
-#### 화면 설계 8
-<img src="./public/readme/ui-design/ui-page-23-01.png" alt="MATE 화면 설계 8" width="800" />
+#### 회원가입
+이메일, 비밀번호, 포지션, 기술 스택 등을 입력해 계정을 생성하는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-23-01.png" alt="회원가입 페이지" width="800" />
 
-#### 화면 설계 9
-<img src="./public/readme/ui-design/ui-page-27-01.png" alt="MATE 화면 설계 9" width="800" />
+#### 모집글 작성
+모집 유형, 인원, 마감일, 기술 스택 등을 입력해 모집글을 등록하는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-27-01.png" alt="모집글 작성 페이지" width="800" />
 
-#### 화면 설계 10
-<img src="./public/readme/ui-design/ui-page-31-01.png" alt="MATE 화면 설계 10" width="700" />
+#### 마이페이지
+프로필 정보 수정과 내 모집글·신청 현황·내 팀 활동을 관리하는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-31-01.png" alt="마이페이지" width="700" />
 
-#### 화면 설계 11
-<img src="./public/readme/ui-design/ui-page-35-01.png" alt="MATE 화면 설계 11" width="520" />
+#### 아이디(이메일) 찾기
+가입 시 등록한 휴대폰 번호로 이메일을 찾는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-35-01.png" alt="아이디 찾기 페이지" width="520" />
 
-#### 화면 설계 12
-<img src="./public/readme/ui-design/ui-page-39-01.png" alt="MATE 화면 설계 12" width="520" />
+#### 비밀번호 찾기
+이메일과 휴대폰 번호로 임시 비밀번호를 발급받는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-39-01.png" alt="비밀번호 찾기 페이지" width="520" />
 
-#### 화면 설계 13
-<img src="./public/readme/ui-design/ui-page-43-01.png" alt="MATE 화면 설계 13" width="700" />
+#### 지원서 작성
+지원 분야, 자기소개, 참고 링크, 소통 채널을 입력해 모집글에 지원하는 화면입니다.
+<img src="./public/readme/ui-design/ui-page-43-01.png" alt="지원서 작성 페이지" width="700" />
 
 </details>
 
