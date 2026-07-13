@@ -32,6 +32,7 @@
 
 - [팀 소개](#teamintro)
 - [주요 기능](#skill)
+- [화면 설계](#ui-design)
 - [기술 스택](#technical)
 - [프로젝트 구조](#structure)
 - [API 연동 및 환경 변수](#api)
@@ -41,19 +42,16 @@
 
 <br />
 
-## <h3 id="teamintro">1. 📢 팀 소개</h3>
+## <h3 id="teamintro">1. 📢 팀원 소개 및 역할 분담</h3>
 
-프론트엔드와 백엔드가 분리된 구조로 개발한 미니 프로젝트입니다.  
-아래 GitHub 링크를 통해 각 팀원의 작업 저장소와 커밋 이력을 확인할 수 있습니다.
+안녕하세요! 백엔드 개발자 3명, 프론트엔드 개발자 2명, 풀스택 개발자 1명으로 구성된 팀입니다.
 
-| 이름/GitHub | 역할 | 담당 영역 |
-| :---: | :---: | :--- |
-| [Hyeonseok93](https://github.com/Hyeonseok93) | Frontend | React/Vite 화면 구현, 라우팅, MUI UI 컴포넌트, 마이페이지/지원 관리 |
-| [pjcosmos](https://github.com/pjcosmos) | Frontend | 모집글 UI, 공통 컴포넌트, 화면 스타일링 및 기능 보완 |
-| [nirey-l](https://github.com/nirey-l) | Frontend | 프론트 기능 보완 및 QA |
-| [hongjiho5148](https://github.com/hongjiho5148) | Backend / Repository Owner | 프론트/백엔드 저장소 관리, API 서버 연동 기반 구성 |
-
-> 팀원 GitHub는 현재 프론트 저장소의 커밋 작성자와 사용자가 제공한 저장소 링크를 기준으로 연결했습니다.
+| 👑 홍지호 | 💻 이예린 | 🔎 윤형진 | 💡 김현석A | 🪄 박진아 | 🎨 장현준 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| <img src="https://github.com/hongjiho5148.png" width="150" height="150" /> | <img src="https://github.com/nirey-l.png" width="150" height="150" /> | <img src="https://github.com/hjyouns.png" width="150" height="150" /> | <img src="https://github.com/Hyeonseok93.png" width="150" height="150" /> | <img src="https://github.com/pjcosmos.png" width="150" height="150" /> | <img src="https://github.com/Jangdochi.png" width="150" height="150" /> |
+| ![Backend](https://img.shields.io/badge/Backend-007ACC) | ![Backend](https://img.shields.io/badge/Backend-007ACC) | ![Backend](https://img.shields.io/badge/Backend-007ACC) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) | ![FullStack](https://img.shields.io/badge/FullStack-5B9A00) |
+| 사용자/마이페이지 도메인 REST API 개발 및 품질 검증 | DB/JPA 설계, Spring Security 인증/인가, 문서화 | 모집글/신청 도메인 API 개발, JPA 성능 튜닝, 페이징/검색 최적화 | React 환경 초기 세팅, 전역상태관리, 로그인/회원가입 UI 구현 | 메인/상세 페이지 반응형 UI 구현, Axios 연동 및 클라이언트 에러 핸들링 | Thymeleaf 기반 서버사이드 관리자(admin) 페이지 구현 및 전체 서비스 QA |
+| github:<br />[hongjiho5148](https://github.com/hongjiho5148) | github:<br />[nirey-l](https://github.com/nirey-l) | github:<br />[hjyouns](https://github.com/hjyouns) | github:<br />[Hyeonseok93](https://github.com/Hyeonseok93) | github:<br />[pjcosmos](https://github.com/pjcosmos) | github:<br />[Jangdochi](https://github.com/Jangdochi) |
 
 <br />
 
@@ -116,7 +114,57 @@
 
 <br />
 
-## <h3 id="technical">3. 🧩 기술 스택</h3>
+## <h3 id="ui-design">3. 🖼 화면 설계</h3>
+
+`2차미니프로젝트_루키즈 2조_Mate_UI_화면_설계서.pdf`에서 화면 설계 이미지만 추출해 정리했습니다.
+
+<details open>
+  <summary>화면 설계 이미지 보기</summary>
+
+#### 화면 설계 1
+<img src="./public/readme/ui-design/ui-page-04-01.png" alt="MATE 화면 설계 1" width="800" />
+
+#### 화면 설계 2
+<img src="./public/readme/ui-design/ui-page-08-01.png" alt="MATE 화면 설계 2" width="800" />
+
+#### 화면 설계 3
+<img src="./public/readme/ui-design/ui-page-11-01.png" alt="MATE 화면 설계 3" width="800" />
+
+#### 화면 설계 4
+<img src="./public/readme/ui-design/ui-page-15-01.png" alt="MATE 화면 설계 4" width="800" />
+
+#### 화면 설계 5
+<img src="./public/readme/ui-design/ui-page-16-01.png" alt="MATE 화면 설계 5" width="420" />
+
+#### 화면 설계 6
+<img src="./public/readme/ui-design/ui-page-16-02.png" alt="MATE 화면 설계 6" width="700" />
+
+#### 화면 설계 7
+<img src="./public/readme/ui-design/ui-page-19-01.png" alt="MATE 화면 설계 7" width="700" />
+
+#### 화면 설계 8
+<img src="./public/readme/ui-design/ui-page-23-01.png" alt="MATE 화면 설계 8" width="800" />
+
+#### 화면 설계 9
+<img src="./public/readme/ui-design/ui-page-27-01.png" alt="MATE 화면 설계 9" width="800" />
+
+#### 화면 설계 10
+<img src="./public/readme/ui-design/ui-page-31-01.png" alt="MATE 화면 설계 10" width="700" />
+
+#### 화면 설계 11
+<img src="./public/readme/ui-design/ui-page-35-01.png" alt="MATE 화면 설계 11" width="520" />
+
+#### 화면 설계 12
+<img src="./public/readme/ui-design/ui-page-39-01.png" alt="MATE 화면 설계 12" width="520" />
+
+#### 화면 설계 13
+<img src="./public/readme/ui-design/ui-page-43-01.png" alt="MATE 화면 설계 13" width="700" />
+
+</details>
+
+<br />
+
+## <h3 id="technical">4. 🧩 기술 스택</h3>
 
 ### Frontend
 
@@ -157,7 +205,7 @@
 
 <br />
 
-## <h3 id="structure">4. 📦 프로젝트 구조</h3>
+## <h3 id="structure">5. 📦 프로젝트 구조</h3>
 
 ```plaintext
 miniproject2-front
@@ -236,7 +284,7 @@ miniproject2-front
 
 <br />
 
-## <h3 id="api">5. 🔗 API 연동 및 환경 변수</h3>
+## <h3 id="api">6. 🔗 API 연동 및 환경 변수</h3>
 
 ### API 호출 구조
 
@@ -259,7 +307,7 @@ VITE_APP_ENV=development
 
 <br />
 
-## <h3 id="getting-started">6. ⚙️ 설치 및 실행</h3>
+## <h3 id="getting-started">7. ⚙️ 설치 및 실행</h3>
 
 ### 1. 저장소 클론
 
