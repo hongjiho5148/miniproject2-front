@@ -1,100 +1,302 @@
 # 🤝 MATE: 함께 만드는 프로젝트 메이트
 
-**MATE**는 사이드 프로젝트 팀원 모집, 스터디 그룹 형성, 그리고 매칭을 돕는 웹 애플리케이션입니다. 개발자, 디자이너, 기획자가 한데 모여 최적의 팀을 구성하고 목표를 달성할 수 있도록 직관적인 플랫폼을 제공합니다.
+<p>
+  <strong>MATE</strong>는 사이드 프로젝트와 스터디 팀원을 모집하고, 지원자와 작성자를 연결해 팀 빌딩 과정을 돕는 웹 애플리케이션입니다.
+  사용자는 프로젝트를 등록하고, 관심 있는 모집글에 지원하며, 마이페이지에서 모집/지원/참여 현황을 관리할 수 있습니다.
+</p>
 
----
+<br />
 
-## 🚀 프로젝트 개요 (Project Overview)
+## 📖 소개 및 개요
 
-MATE는 복잡한 팀 구성 과정을 단순화하여 유저가 오직 프로젝트의 본질에 집중할 수 있도록 돕습니다.
-- **모집 및 지원**: 누구나 새로운 프로젝트/스터디 모집글을 작성하고, 관심 있는 글에 지원할 수 있습니다.
-- **팀 매칭**: 작성자는 지원자의 프로필을 확인하고 승인/거절을 통해 팀원을 확정합니다.
-- **협업 관리**: 마이페이지를 통해 본인의 지원 현황과 모집 현황을 한눈에 관리할 수 있습니다.
+- 프로젝트명: **MATE**
+- 서비스 유형: 프로젝트/스터디 팀원 모집 및 매칭 플랫폼
+- Frontend Repository: [miniproject2-front](https://github.com/hongjiho5148/miniproject2-front)
+- Backend Repository: [miniproject2-backend](https://github.com/hongjiho5148/miniproject2-backend)
 
----
+#### 서비스 소개
 
-## 🛠 기술 스택 (Tech Stack)
+- 프로젝트 또는 스터디 모집글을 등록하고 최신 모집글을 탐색할 수 있습니다.
+- 모집글은 `전체`, `프로젝트`, `스터디` 카테고리로 분류해 확인할 수 있습니다.
+- 키워드 검색과 페이지네이션으로 원하는 모집글을 빠르게 찾을 수 있습니다.
+- 로그인한 사용자는 모집글 작성, 수정, 삭제, 지원하기 기능을 이용할 수 있습니다.
+- 작성자는 지원자 목록을 확인하고 승인/거절로 팀원을 확정할 수 있습니다.
+- 마이페이지에서 프로필, 내 모집글, 신청 현황, 참여 중인 팀을 한 화면에서 관리할 수 있습니다.
 
-### Core
-- **Framework**: React 19 (Vite 기반)
-- **Routing**: React Router Dom v7
-- **State Management**: Zustand (Auth, Post, UI 상태 관리)
+<br />
+
+## ✨ MATE 구경하기
+
+<details>
+<summary>목차</summary>
+
+- [팀 소개](#teamintro)
+- [주요 기능](#skill)
+- [기술 스택](#technical)
+- [프로젝트 구조](#structure)
+- [API 연동 및 환경 변수](#api)
+- [설치 및 실행](#getting-started)
+
+</details>
+
+<br />
+
+## <h3 id="teamintro">1. 📢 팀 소개</h3>
+
+프론트엔드와 백엔드가 분리된 구조로 개발한 미니 프로젝트입니다.  
+아래 GitHub 링크를 통해 각 팀원의 작업 저장소와 커밋 이력을 확인할 수 있습니다.
+
+| 이름/GitHub | 역할 | 담당 영역 |
+| :---: | :---: | :--- |
+| [Hyeonseok93](https://github.com/Hyeonseok93) | Frontend | React/Vite 화면 구현, 라우팅, MUI UI 컴포넌트, 마이페이지/지원 관리 |
+| [pjcosmos](https://github.com/pjcosmos) | Frontend | 모집글 UI, 공통 컴포넌트, 화면 스타일링 및 기능 보완 |
+| [nirey-l](https://github.com/nirey-l) | Frontend | 프론트 기능 보완 및 QA |
+| [hongjiho5148](https://github.com/hongjiho5148) | Backend / Repository Owner | 프론트/백엔드 저장소 관리, API 서버 연동 기반 구성 |
+
+> 팀원 GitHub는 현재 프론트 저장소의 커밋 작성자와 사용자가 제공한 저장소 링크를 기준으로 연결했습니다.
+
+<br />
+
+## <h3 id="skill">2. 🍀 주요 기능</h3>
+
+<details>
+  <summary>메인 페이지</summary>
+
+- 최신 프로젝트/스터디 모집글을 카드 형태로 제공합니다.
+- `전체`, `스터디`, `프로젝트` 카테고리 필터를 제공합니다.
+- 기술 스택, 주제, 키워드 기반 검색을 지원합니다.
+- 페이지네이션으로 모집글 목록을 나누어 조회합니다.
+- 로그인하지 않은 사용자가 프로젝트 시작 버튼을 누르면 로그인 페이지로 이동합니다.
+
+</details>
+
+<details>
+  <summary>회원 인증</summary>
+
+- 로그인, 회원가입, 이메일 찾기, 비밀번호 찾기 화면을 제공합니다.
+- Zustand 기반 인증 상태를 사용해 로그인 여부를 관리합니다.
+- `GuestRoute`, `ProtectedRoute`로 접근 가능한 페이지를 분리합니다.
+- Axios Interceptor를 통해 Access Token을 자동으로 요청 헤더에 주입합니다.
+- Access Token 만료 시 Refresh Token으로 자동 재발급을 시도합니다.
+
+</details>
+
+<details>
+  <summary>모집글 작성 및 상세</summary>
+
+- 프로젝트/스터디 모집글을 작성하고 수정할 수 있습니다.
+- 상세 페이지에서 모집 상태, 모집 인원, 진행 방식, 마감일, 기술 스택, 작성자 정보를 확인할 수 있습니다.
+- 본인이 작성한 글은 상세 페이지에서 수정 및 삭제가 가능합니다.
+- 본인이 작성한 공고에는 지원할 수 없도록 제어합니다.
+- 이미 지원한 공고는 중복 지원을 막습니다.
+
+</details>
+
+<details>
+  <summary>지원 및 매칭</summary>
+
+- 로그인한 사용자는 모집글에 지원 메시지, 연락처, 참고 링크 등을 작성해 지원할 수 있습니다.
+- 작성자는 마이페이지에서 지원자 목록을 확인할 수 있습니다.
+- 지원서 상세 모달에서 지원자의 포지션, 기술 스택, 메시지를 확인합니다.
+- 작성자는 지원자를 승인하거나 거절할 수 있습니다.
+- 지원자는 대기 중인 지원을 취소할 수 있습니다.
+
+</details>
+
+<details>
+  <summary>마이페이지</summary>
+
+- 프로필 이미지, 닉네임, 전화번호, 포지션, 기술 스택, 비밀번호를 수정할 수 있습니다.
+- 닉네임과 전화번호 중복 확인을 지원합니다.
+- 내 모집글, 신청 현황, 내 팀을 탭으로 분리해 관리합니다.
+- 카테고리 필터로 프로젝트/스터디 활동 내역을 구분해 볼 수 있습니다.
+- 회원 탈퇴 기능을 제공합니다.
+
+</details>
+
+<br />
+
+## <h3 id="technical">3. 🧩 기술 스택</h3>
+
+### Frontend
+
+<div>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=000000" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=Vite&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=ReactRouter&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Zustand-181717?style=flat-square&logo=React&logoColor=ffffff" />
+</div>
+
+- **React 19**: 컴포넌트 기반 UI 구현
+- **Vite**: 빠른 개발 서버와 번들링 환경 구성
+- **React Router DOM v7**: 페이지 라우팅 및 인증 라우트 분리
+- **Zustand**: 인증, 모집글, UI 상태 관리
 
 ### UI & Styling
-- **UI Framework**: MUI (Material UI)
-- **Styling**: Emotion (@emotion/react, @emotion/styled)
-- **Icons**: MUI Icons
 
-### Infrastructure & Dev Tools
-- **HTTP Client**: Axios (Interceptor 기반 JWT 인증 처리)
-- **API Mocking**: MSW (Mock Service Worker)를 통한 독립적 개발 환경 구축
-- **Build Tool**: Vite
+<div>
+  <img src="https://img.shields.io/badge/MUI-007FFF?style=flat-square&logo=MUI&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Emotion-DB7093?style=flat-square&logo=Emotion&logoColor=ffffff" />
+</div>
 
----
+- **MUI(Material UI)**: 레이아웃, 폼, 카드, 모달, 탭 등 UI 컴포넌트 구성
+- **Emotion**: MUI 기반 스타일 확장
+- **MUI Icons**: 주요 액션과 상태를 아이콘으로 표현
 
-## 📂 디렉토리 구조 (Directory Structure)
+### API & Development
 
-```bash
-src/
-├── api/             # API 호출 함수 및 Axios 인스턴스 (Interceptor 포함)
-├── assets/          # 이미지, SVG 등 정적 리소스
-├── component/       # 재사용 가능한 UI 컴포넌트
-│   ├── common/      # Button, PostCard, Avatar 등 공통 컴포넌트
-│   └── layout/      # Header, Footer, MainLayout 등 레이아웃
-├── constants/       # 기술 스택 목록 등 고정값 정의
-├── mocks/           # MSW 핸들러 및 모의 데이터 (Mock Data)
-├── pages/           # 주요 서비스 화면 (View)
-├── store/           # Zustand 기반 상태 관리 스토어
-├── styles/          # MUI Theme 및 전역 CSS 설정
-└── utils/           # 날짜 포맷, 상태 변환 등 유틸리티 함수
+<div>
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/MSW-FF6A33?style=flat-square&logo=MockServiceWorker&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=ESLint&logoColor=ffffff" />
+</div>
+
+- **Axios**: API 요청 공통 인스턴스와 인증 Interceptor 구성
+- **MSW**: 백엔드 연동 전 독립적인 mock API 개발 환경 제공
+- **ESLint**: 코드 품질 관리
+
+<br />
+
+## <h3 id="structure">4. 📦 프로젝트 구조</h3>
+
+```plaintext
+miniproject2-front
+├─ public
+│  └─ mockServiceWorker.js
+├─ src
+│  ├─ api
+│  │  ├─ authApi.js
+│  │  ├─ axiosInstance.js
+│  │  ├─ boardApi.js
+│  │  └─ postApi.js
+│  ├─ assets
+│  │  ├─ hero.png
+│  │  ├─ react.svg
+│  │  └─ vite.svg
+│  ├─ component
+│  │  ├─ common
+│  │  │  ├─ Avatar.jsx
+│  │  │  ├─ Badge.jsx
+│  │  │  ├─ Breadcrumb.jsx
+│  │  │  ├─ Button.jsx
+│  │  │  ├─ ConfirmModal.jsx
+│  │  │  ├─ FormInput.jsx
+│  │  │  ├─ GuestRoute.jsx
+│  │  │  ├─ Pagination.jsx
+│  │  │  ├─ PostCard.jsx
+│  │  │  ├─ ProtectedRoute.jsx
+│  │  │  ├─ SkeletonCard.jsx
+│  │  │  ├─ Tag.jsx
+│  │  │  └─ ToastMessage.jsx
+│  │  └─ layout
+│  │     ├─ Footer.jsx
+│  │     ├─ Header.jsx
+│  │     └─ MainLayout.jsx
+│  ├─ constants
+│  │  └─ techStacks.js
+│  ├─ mocks
+│  │  ├─ browser.js
+│  │  ├─ handlers.js
+│  │  ├─ mockApplies.js
+│  │  ├─ mockBoard.js
+│  │  ├─ mockPosts.js
+│  │  └─ mockUsers.js
+│  ├─ pages
+│  │  ├─ BoardPage.jsx
+│  │  ├─ ErrorPage.jsx
+│  │  ├─ FindEmailPage.jsx
+│  │  ├─ FindPasswordPage.jsx
+│  │  ├─ LoginPage.jsx
+│  │  ├─ MainPage.jsx
+│  │  ├─ MyAppliesPage.jsx
+│  │  ├─ MyPage.jsx
+│  │  ├─ MyPostsPage.jsx
+│  │  ├─ PostApplyPage.jsx
+│  │  ├─ PostDetailPage.jsx
+│  │  ├─ PostEditPage.jsx
+│  │  ├─ PostWritePage.jsx
+│  │  └─ RegisterPage.jsx
+│  ├─ store
+│  │  ├─ authStore.js
+│  │  ├─ postStore.js
+│  │  └─ uiStore.js
+│  ├─ styles
+│  │  └─ theme.js
+│  ├─ utils
+│  │  └─ statusUtils.js
+│  ├─ App.jsx
+│  ├─ main.jsx
+│  ├─ App.css
+│  └─ index.css
+├─ .env.development
+├─ .env.production
+├─ package.json
+└─ vite.config.js
 ```
 
----
+<br />
 
-## ✨ 주요 화면 및 기능 (Core Features)
-
-1. **메인 페이지 (MainPage)**: 최신 프로젝트/스터디 모집글 목록을 탐색하고 카테고리별 필터링 및 검색 기능을 제공합니다.
-2. **인증 (Login/Register)**: JWT 기반 로그인 및 회원가입을 지원하며, 비밀번호 찾기 등 편의 기능을 포함합니다.
-3. **모집글 작성 및 관리 (Post CRUD)**: 프로젝트 상세 내용, 모집 인원, 기술 스택 등을 설정하여 글을 게시하고 수정할 수 있습니다.
-4. **지원하기 및 매칭 (Apply & Match)**: 관심 있는 프로젝트에 지원 동기를 작성하여 신청할 수 있습니다.
-5. **마이페이지 (MyPage)**: 
-   - **프로필 관리**: 닉네임, 기술 스택 등 개인 정보 수정
-   - **내 모집글**: 내가 올린 글의 지원자 목록 확인 및 수락/거절 관리
-   - **내 지원현황**: 내가 지원한 프로젝트의 승인 여부 실시간 확인
-
----
-
-## 🔗 API 연동 및 환경 변수
+## <h3 id="api">5. 🔗 API 연동 및 환경 변수</h3>
 
 ### API 호출 구조
-- `src/api/axiosInstance.js`에서 공통 설정을 관리합니다.
-- **인증 처리**: Request Interceptor를 통해 `Authorization` 헤더에 Bearer 토큰을 자동으로 주입합니다.
-- **토큰 갱신**: Response Interceptor에서 401 에러 감지 시 Refresh Token을 사용해 자동으로 Access Token을 재발급받습니다.
 
-### 환경 변수 설정
-루트 디렉토리에 `.env` 파일을 생성하고 다음 설정을 추가하세요.
+- `src/api/axiosInstance.js`에서 공통 Axios 인스턴스를 관리합니다.
+- `VITE_API_BASE_URL` 값을 기준으로 API 서버 주소를 설정합니다.
+- API 주소가 `/api`로 끝나지 않으면 자동으로 `/api`를 붙여 중복/누락을 방지합니다.
+- Request Interceptor에서 로그인 사용자의 Access Token을 `Authorization: Bearer` 헤더에 자동 주입합니다.
+- Response Interceptor에서 공통 응답 포맷 `{ success, data, message, timestamp }`를 처리합니다.
+- `AUTH_002` 응답 시 Refresh Token으로 Access Token 재발급을 시도합니다.
+- `AUTH_003` 응답 시 강제 로그아웃 후 로그인 페이지로 이동합니다.
+
+### 환경 변수
+
 ```env
-VITE_API_BASE_URL=http://localhost:8080/api
+VITE_API_BASE_URL=/api
+VITE_APP_ENV=development
 ```
 
----
+프로덕션 환경에서는 배포 서버 주소에 맞춰 `VITE_API_BASE_URL`을 변경합니다.
 
-## ⚙️ 설치 및 실행 방법 (Getting Started)
+<br />
 
-### 1. 의존성 설치
+## <h3 id="getting-started">6. ⚙️ 설치 및 실행</h3>
+
+### 1. 저장소 클론
+
 ```bash
-cd Frontend-Mate
+git clone https://github.com/hongjiho5148/miniproject2-front.git
+cd miniproject2-front
+```
+
+### 2. 의존성 설치
+
+```bash
 npm install
 ```
 
-### 2. 로컬 개발 서버 실행
+### 3. 로컬 개발 서버 실행
+
 ```bash
 npm run dev
 ```
-- 실행 후 브라우저에서 `http://localhost:5173`으로 접속합니다.
 
-### 3. 빌드 및 배포
+실행 후 브라우저에서 `http://localhost:5173`으로 접속합니다.
+
+### 4. 빌드
+
 ```bash
 npm run build
 ```
-- `dist` 폴더에 정적 빌드 파일이 생성됩니다.
+
+### 5. 린트
+
+```bash
+npm run lint
+```
+
+<br />
+
+## 🗂 관련 저장소
+
+- Frontend: [https://github.com/hongjiho5148/miniproject2-front](https://github.com/hongjiho5148/miniproject2-front)
+- Backend: [https://github.com/hongjiho5148/miniproject2-backend](https://github.com/hongjiho5148/miniproject2-backend)
