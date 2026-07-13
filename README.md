@@ -23,7 +23,6 @@
 - 작성자는 지원자 목록을 확인하고 승인/거절로 팀원을 확정할 수 있습니다.
 - 마이페이지에서 프로필, 내 모집글, 신청 현황, 참여 중인 팀을 한 화면에서 관리할 수 있습니다.
 
-<br />
 
 ## ✨ MATE 구경하기
 
@@ -40,7 +39,6 @@
 
 </details>
 
-<br />
 
 ## <h3 id="teamintro">1. 📢 팀원 소개 및 역할 분담</h3>
 
@@ -53,7 +51,6 @@
 | 사용자/마이페이지 도메인 REST API 개발 및 품질 검증 | DB/JPA 설계, Spring Security 인증/인가, 문서화 | 모집글/신청 도메인 API 개발, JPA 성능 튜닝, 페이징/검색 최적화 | React 환경 초기 세팅, 전역상태관리, 로그인/회원가입 UI 구현 | 메인/상세 페이지 반응형 UI 구현, Axios 연동 및 클라이언트 에러 핸들링 | Thymeleaf 기반 서버사이드 관리자(admin) 페이지 구현 및 전체 서비스 QA |
 | github:<br />[hongjiho5148](https://github.com/hongjiho5148) | github:<br />[nirey-l](https://github.com/nirey-l) | github:<br />[hjyouns](https://github.com/hjyouns) | github:<br />[Hyeonseok93](https://github.com/Hyeonseok93) | github:<br />[pjcosmos](https://github.com/pjcosmos) | github:<br />[Jangdochi](https://github.com/Jangdochi) |
 
-<br />
 
 ## <h3 id="skill">2. 🍀 주요 기능</h3>
 
@@ -112,7 +109,6 @@
 
 </details>
 
-<br />
 
 ## <h3 id="ui-design">3. 🖼 화면 설계</h3>
 
@@ -173,7 +169,6 @@
 
 </details>
 
-<br />
 
 ## <h3 id="technical">4. 🧩 기술 스택</h3>
 
