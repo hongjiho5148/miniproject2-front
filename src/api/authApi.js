@@ -34,10 +34,15 @@ export const authApi = {
     return await axiosInstance.post('/auth/find-email', { phoneNumber });
   },
 
-  // 비밀번호 재설정 (POST /api/auth/reset-password)
+  // 비밀번호 재설정 1단계: 본인 확인 후 1회용 재설정 토큰 발급 (POST /api/auth/reset-password)
+  // 응답: { resetToken, expiresInSeconds }
   resetPassword: async (email, phoneNumber) => {
-    // 백엔드 로그 확인 결과 @RequestParam을 사용하므로 params로 전달
     return await axiosInstance.post('/auth/reset-password', { email, phoneNumber });
+  },
+
+  // 비밀번호 재설정 2단계: 토큰과 새 비밀번호로 변경 (POST /api/auth/reset-password/confirm)
+  confirmPasswordReset: async (token, newPassword) => {
+    return await axiosInstance.post('/auth/reset-password/confirm', { token, newPassword });
   },
 
   // 로그아웃 API (POST /api/auth/logout)

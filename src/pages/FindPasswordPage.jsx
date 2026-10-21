@@ -15,7 +15,12 @@ const FindPasswordPage = () => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState(null);
+  // 단계: verify(본인 확인) -> reset(새 비밀번호 설정) -> done(완료)
+  const [step, setStep] = useState('verify');
+  const [resetToken, setResetToken] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
@@ -57,14 +62,42 @@ const FindPasswordPage = () => {
       // 2. authApi 사용 (v1.1: reset-password)
       const response = await authApi.resetPassword(email, phoneNumber.replace(/-/g, ''));
       
-      // 3. 응답 성공 시 결과 화면으로 전환
-      // axiosInstance interceptor에서 이미 response.data.data를 반환하므로 response는 문자열(임시비번)입니다.
-      if (response) {
-        setResult(response); 
+      // 3. 본인 확인 성공 시 새 비밀번호 설정 단계로 전환
+      // axiosInstance interceptor가 response.data.data를 반환하므로 response는 { resetToken, expiresInSeconds }입니다.
+      if (response?.resetToken) {
+        setResetToken(response.resetToken);
+        setStep('reset');
       }
     } catch (err) {
       // 4. 에러 발생 시 처리
       const msg = err.error?.message || err.message || '입력하신 정보가 일치하지 않습니다.';
+      setError(msg);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // 새 비밀번호 설정 제출 핸들러
+  const handleConfirm = async (e) => {
+    e.preventDefault();
+    setError('');
+    setPasswordError('');
+
+    if (newPassword.length < 8 || newPassword.length > 64) {
+      setPasswordError('비밀번호는 8~64자여야 합니다.');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setPasswordError('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await authApi.confirmPasswordReset(resetToken, newPassword);
+      setStep('done');
+    } catch (err) {
+      const msg = err.error?.message || err.message || '비밀번호를 변경하지 못했습니다. 처음부터 다시 시도해 주세요.';
       setError(msg);
     } finally {
       setIsLoading(false);
@@ -103,10 +136,12 @@ const FindPasswordPage = () => {
             비밀번호 찾기
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary', mb: 6, fontWeight: 500 }}>
-            가입 시 등록한 이메일과 휴대폰 번호를 입력해 주세요.
+            {step === 'verify' && '가입 시 등록한 이메일과 휴대폰 번호를 입력해 주세요.'}
+            {step === 'reset' && '본인 확인이 완료되었습니다. 새 비밀번호를 설정해 주세요. (10분 안에 완료해야 합니다)'}
+            {step === 'done' && '비밀번호가 변경되었습니다.'}
           </Typography>
 
-          {result === null ? (
+          {step === 'verify' ? (
             /* [1. 입력 폼 화면] */
             <Box component="form" onSubmit={handleSubmit} sx={{ textAlign: 'left' }}>
               <Stack spacing={3} sx={{ mb: 6 }}>
@@ -139,30 +174,55 @@ const FindPasswordPage = () => {
                   boxShadow: '0 12px 24px rgba(108,99,255,0.2)', mb: 4 
                 }}
               >
-                {isLoading ? '처리 중...' : '임시 비밀번호 발급받기'}
+                {isLoading ? '처리 중...' : '본인 확인'}
+              </Button>
+            </Box>
+          ) : step === 'reset' ? (
+            /* [2. 새 비밀번호 설정 화면] */
+            <Box component="form" onSubmit={handleConfirm} sx={{ textAlign: 'left' }}>
+              <Stack spacing={3} sx={{ mb: 6 }}>
+                <Box>
+                  <Typography variant="body2" sx={{ fontWeight: 700, mb: 1.5, ml: 0.5 }}>새 비밀번호</Typography>
+                  <TextField
+                    fullWidth type="password" placeholder="8자 이상 입력해 주세요"
+                    value={newPassword} onChange={(e) => { setNewPassword(e.target.value); setPasswordError(''); }}
+                    sx={inputStyle}
+                  />
+                </Box>
+                <Box>
+                  <Typography variant="body2" sx={{ fontWeight: 700, mb: 1.5, ml: 0.5 }}>새 비밀번호 확인</Typography>
+                  <TextField
+                    fullWidth type="password" placeholder="비밀번호를 한 번 더 입력해 주세요"
+                    value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value); setPasswordError(''); }}
+                    error={!!passwordError} helperText={passwordError}
+                    sx={inputStyle}
+                  />
+                </Box>
+              </Stack>
+
+              <Button
+                fullWidth variant="contained" type="submit" disabled={isLoading}
+                sx={{
+                  height: 60, fontSize: '1.1rem', fontWeight: 900, borderRadius: 4,
+                  boxShadow: '0 12px 24px rgba(108,99,255,0.2)', mb: 4
+                }}
+              >
+                {isLoading ? '처리 중...' : '비밀번호 변경'}
               </Button>
             </Box>
           ) : (
-            /* [2. 성공 결과 화면] */
+            /* [3. 완료 화면] */
             <Box sx={{ textAlign: 'center' }}>
-              <Box sx={{ 
-                p: 5, bgcolor: '#F5F6FF', borderRadius: 6, border: '1px solid #E0E7FF', mb: 4 
+              <Box sx={{
+                p: 5, bgcolor: '#F5F6FF', borderRadius: 6, border: '1px solid #E0E7FF', mb: 4
               }}>
                 <Typography sx={{ fontSize: 40, mb: 1 }}>🔑</Typography>
-                <Typography variant="body2" sx={{ fontWeight: 800, color: '#6366F1', mb: 2 }}>
-                  임시 비밀번호가 발급되었습니다
+                <Typography variant="body2" sx={{ fontWeight: 800, color: '#6366F1', mb: 1 }}>
+                  비밀번호가 변경되었습니다
                 </Typography>
-                <Typography variant="h4" sx={{ fontWeight: 900, color: '#111827', letterSpacing: 2, mb: 3 }}>
-                  {result}
+                <Typography variant="caption" sx={{ color: '#6B7280', fontWeight: 500, lineHeight: 1.5 }}>
+                  보안을 위해 기존에 로그인되어 있던 기기는 모두 로그아웃됩니다. 새 비밀번호로 로그인해 주세요.
                 </Typography>
-                <Box sx={{ bgcolor: '#FEF3C7', p: 2, borderRadius: 3 }}>
-                  <Typography variant="caption" sx={{ color: '#92400E', fontWeight: 800, display: 'block', mb: 0.5 }}>
-                    ⚠️ 보안 주의사항
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: '#92400E', fontWeight: 500, lineHeight: 1.5 }}>
-                    로그인 후 마이페이지에서 반드시 비밀번호를 변경해 주세요.
-                  </Typography>
-                </Box>
               </Box>
 
               <Button
