@@ -30,6 +30,9 @@ const saveDB = (db) => {
 
 let db = getDB();
 
+// 비밀번호 재설정 토큰 (token -> userId). 메모리에만 보관한다.
+const resetTokens = new Map();
+
 export const handlers = [
   // 1. 인증 관련 (Auth)
   http.post('*/api/auth/login', async ({ request }) => {
@@ -114,17 +117,14 @@ export const handlers = [
     );
 
     if (user) {
-      // 임시 비밀번호 생성 (예시)
-      const temporaryPassword = "mate" + Math.random().toString(36).substring(2, 7) + "!";
-      
-      // 실제 DB(Mock)의 비밀번호도 임시 비밀번호로 변경 (로그인 가능하게 함)
-      user.password = temporaryPassword;
-      saveDB(db);
+      // 1회용 재설정 토큰 발급 (실제 백엔드와 동일하게 비밀번호는 아직 바꾸지 않는다)
+      const resetToken = "mock-" + Math.random().toString(36).substring(2, 12);
+      resetTokens.set(resetToken, user.id);
 
-      return HttpResponse.json({ 
-        success: true, 
-        message: "비밀번호 재설정 이메일이 발송되었습니다.",
-        data: temporaryPassword // 화면에 보여줄 임시 비밀번호 전달
+      return HttpResponse.json({
+        success: true,
+        message: "본인 확인이 완료되었습니다. 발급된 토큰으로 새 비밀번호를 설정해 주세요.",
+        data: { resetToken, expiresInSeconds: 600 }
       });
     }
 
@@ -135,6 +135,28 @@ export const handlers = [
       }), 
       { status: 404 }
     );
+  }),
+
+  // 비밀번호 재설정 2단계 (POST */api/auth/reset-password/confirm) - 토큰은 1회만 사용 가능
+  http.post('*/api/auth/reset-password/confirm', async ({ request }) => {
+    const { token, newPassword } = await request.json();
+    const userId = resetTokens.get(token);
+    const user = userId && db.users.find(u => u.id === userId);
+
+    if (!user) {
+      return new HttpResponse(
+        JSON.stringify({
+          success: false,
+          error: { code: 'AUTH_005', message: "유효하지 않거나 만료된 비밀번호 재설정 토큰입니다" }
+        }),
+        { status: 400 }
+      );
+    }
+
+    resetTokens.delete(token);
+    user.password = newPassword;
+    saveDB(db);
+    return HttpResponse.json({ success: true, message: "비밀번호가 변경되었습니다. 새 비밀번호로 로그인해 주세요.", data: null });
   }),
 
   // 2. 유저/마이페이지 (Users)
